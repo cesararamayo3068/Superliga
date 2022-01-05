@@ -86,6 +86,7 @@ public class LeerArchivoCSV {
     }
 
     public void nombreMasComun() {
+        int ale=0;
         int river = 0;
         ArrayList<String> listName = new ArrayList<>();
         for (Socio s : socios) {
@@ -93,15 +94,19 @@ public class LeerArchivoCSV {
             if (s.getEquipo().equals("River")) {
                 river++;
                listName.add(s.getNombre());
-                
+                if (s.getNombre().equals("Alejandro")){
+                ale++;
+            }
             }
             
             
-        }
-      //  System.out.println("Lista de Nombres = " + listName);
+	}
+        System.out.println("ale = " + ale);
+       // System.out.println("Lista de Nombres = " + agustin);
         
         
-       System.out.println(" \"Alejandro\" es :" + Collections.frequency(listName,"Agustín") + " veces");
+        System.out.println("listName = " + listName.stream().count());
+     //  System.out.println(" \"Alejandro\" es :" + Collections.frequency(listName,"Agustín") + " veces");
         
         //System.out.println("river: " + river);
 
