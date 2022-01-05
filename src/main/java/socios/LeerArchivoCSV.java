@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class LeerArchivoCSV {
@@ -87,23 +89,27 @@ public class LeerArchivoCSV {
     }
 
     public void nombreMasComun() {
-        int ale = 0;
-        int river = 0;
+
         ArrayList<String> listName = new ArrayList<>();
+
         for (Socio s : socios) {
 
             if (s.getEquipo().equals("River")) {
-                river++;
+
                 listName.add(s.getNombre());
-                if (s.getNombre().equals("Alejandro")) {
-                    ale++;
-                }
+
             }
 
         }
-        System.out.println("ale = " + ale);
 
-        System.out.println("listName = " + listName.stream().distinct().collect(Collectors.toList()));
+       // System.out.println("listName = " + listName.stream().distinct().collect(Collectors.toList()));
+        Map<String, Long> counted = listName.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        System.out.println(counted);
+    }
+
+    public void contarElementos() {
 
     }
 
