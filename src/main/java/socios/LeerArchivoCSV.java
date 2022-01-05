@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LeerArchivoCSV {
 
@@ -51,7 +52,7 @@ public class LeerArchivoCSV {
     }
 
     public void contarSocios() {
-        System.out.println("Cantidad de Socios:" + socios.stream().count() );
+        System.out.println("Cantidad de Socios:" + socios.stream().count());
 
     }
 
@@ -59,7 +60,7 @@ public class LeerArchivoCSV {
         int racing = 0;
         int edades = 0;
         int promedio = 0;
-        
+
         for (Socio s : socios) {
 
             if (s.getEquipo().equals("Racing")) {
@@ -84,10 +85,26 @@ public class LeerArchivoCSV {
         socios.stream().limit(100).forEach(x -> System.out.println(x));
     }
 
-    public void mostrarSocios() {
-        for (Socio s : this.socios) {
-            System.out.println(s.toString());
+    public void nombreMasComun() {
+        int river = 0;
+        ArrayList<String> listName = new ArrayList<>();
+        for (Socio s : socios) {
+          
+            if (s.getEquipo().equals("River")) {
+                river++;
+               listName.add(s.getNombre());
+                
+            }
+            
+            
         }
+      //  System.out.println("Lista de Nombres = " + listName);
+        
+        
+       System.out.println(" \"Alejandro\" es :" + Collections.frequency(listName,"Agustín") + " veces");
+        
+        //System.out.println("river: " + river);
+
     }
 
     public String getNombreArchivoCSV() {
