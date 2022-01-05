@@ -12,7 +12,7 @@ public class PruebaSocioCSV {
        // a.mostrarSocios();
         a.contarSocios();
         a.promedioEdadRacing();
-       // a.listarCienPersonas();
+        a.listarCienPersonas();
         a.nombreMasComun();
     }
 

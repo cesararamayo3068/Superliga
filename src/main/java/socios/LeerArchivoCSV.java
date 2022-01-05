@@ -73,6 +73,7 @@ public class LeerArchivoCSV {
             }
 
         }
+
         System.out.println("Promedio de Edades de hinchas de Racing:" + promedio);
 
     }
@@ -82,10 +83,13 @@ public class LeerArchivoCSV {
         for (Socio s : socios) {
 
             if (s.getEstadoCivil().equals("Casado") && (s.getEstudios().equals("Universitario"))) {
-                socios.stream().sorted();
+
             }
         }
+
+       
         socios.stream().limit(100).forEach(x -> System.out.println(x));
+        Collections.sort(socios ,new CompararEdad());
     }
 
     public void nombreMasComun() {
@@ -102,10 +106,10 @@ public class LeerArchivoCSV {
 
         }
 
-       // System.out.println("listName = " + listName.stream().distinct().collect(Collectors.toList()));
+        // System.out.println("listName = " + listName.stream().distinct().collect(Collectors.toList()));
+        //Collections.sort(listName ,new CompararEdad());
         Map<String, Long> counted = listName.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-
         System.out.println(counted);
     }
 

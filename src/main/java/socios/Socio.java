@@ -1,6 +1,6 @@
 package socios;
 
-public class Socio {
+public class Socio{
 
     private String nombre;
     private int edad;
@@ -61,8 +61,5 @@ public class Socio {
         return "Socios {" + "Nombre:" + nombre + ", Edad:" + edad + ", Equipo:" + equipo + '}'; //+ ", EstadoCivil=" + estadoCivil + ", Estudios:" + estudios + '}';
     }
 
-    
-
-    
-
+  
 }
