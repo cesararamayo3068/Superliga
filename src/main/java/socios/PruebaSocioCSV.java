@@ -14,6 +14,7 @@ public class PruebaSocioCSV {
         a.promedioEdadRacing();
         a.listarCienPersonas();
         a.nombreMasComun();
+        a.contarSociosPorEquipos();
     }
 
 }

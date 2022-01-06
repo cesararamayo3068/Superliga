@@ -13,7 +13,7 @@ public class CompararEdad implements Comparator<Socio> {
         } else if (s1.getEdad() < s2.getEdad()) {
             rta = 1;
         } else {
-            rta = 0;
+          return rta ;
         }
         return rta;
     }

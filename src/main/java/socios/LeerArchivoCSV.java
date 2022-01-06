@@ -55,8 +55,9 @@ public class LeerArchivoCSV {
     }
 
     public void contarSocios() {
-        System.out.println("Cantidad de Socios:" + socios.stream().count());
-
+        System.out.println("==============================================");
+        System.out.println("Cantidad de Personas Registradas:" + socios.stream().count());
+        System.out.println("==============================================");
     }
 
     public void promedioEdadRacing() {
@@ -73,9 +74,9 @@ public class LeerArchivoCSV {
             }
 
         }
-
+        System.out.println("====================================================");
         System.out.println("Promedio de Edades de hinchas de Racing:" + promedio);
-
+        System.out.println("====================================================");
     }
 
     public void listarCienPersonas() {
@@ -87,9 +88,8 @@ public class LeerArchivoCSV {
             }
         }
 
-       
         socios.stream().limit(100).forEach(x -> System.out.println(x));
-        Collections.sort(socios ,new CompararEdad());
+        Collections.sort(socios, new CompararEdad());
     }
 
     public void nombreMasComun() {
@@ -105,16 +105,25 @@ public class LeerArchivoCSV {
             }
 
         }
-
-        // System.out.println("listName = " + listName.stream().distinct().collect(Collectors.toList()));
-        //Collections.sort(listName ,new CompararEdad());
         Map<String, Long> counted = listName.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println(counted);
     }
 
-    public void contarElementos() {
+    public void contarSociosPorEquipos() {
+        ArrayList<String> equipos = new ArrayList<>();
+        for (Socio s : socios) {
 
+            equipos.add(s.getEquipo());
+
+        }
+        Map<String, Long> counted = equipos.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.print(counted.toString());
+
+        socios.stream()
+                .collect(Collectors.groupingBy(socios ->socios.getEquipo(), Collectors.counting()))
+                .forEach((equipo, count) -> System.out.println(equipo + "\t" + count));
     }
 
     public String getNombreArchivoCSV() {
