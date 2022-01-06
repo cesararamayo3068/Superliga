@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
+
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -112,18 +113,25 @@ public class LeerArchivoCSV {
 
     public void contarSociosPorEquipos() {
         ArrayList<String> equipos = new ArrayList<>();
+        ArrayList<Integer> edades = new ArrayList<>();
         for (Socio s : socios) {
 
             equipos.add(s.getEquipo());
-
+            edades.add(s.getEdad());
         }
-        Map<String, Long> counted = equipos.stream()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        System.out.print(counted.toString());
 
+        //con este stream agrupo los equipos con la cantidad de socios
+        //  ArrayList<Integer>[]list=new ArrayList<Integer>();
         socios.stream()
-                .collect(Collectors.groupingBy(socios ->socios.getEquipo(), Collectors.counting()))
-                .forEach((equipo, count) -> System.out.println(equipo + "\t" + count));
+                .collect(Collectors.groupingBy(socios -> socios.getEquipo(),
+           Collectors.summingInt(socios -> socios.getEdad())))
+              .forEach((equipo, sumEdades) -> System.out.println("\t" + sumEdades));
+      socios.stream()
+               .collect(Collectors.groupingBy(socios -> socios.getEquipo(), Collectors.counting()))
+                .forEach((equipo, contador) -> System.out.println(equipo + "\t" + contador));
+      
+    
+      
     }
 
     public String getNombreArchivoCSV() {
